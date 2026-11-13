@@ -47,7 +47,8 @@ figure {
 
 img {
     width: 100%;
-    height: auto;
+    height: 250px; /* Thêm dòng này để ép chiều cao bằng nhau */
+    object-fit: cover; /* Thêm dòng này để ảnh không bị méo tỷ lệ */
     display: block;
 }
 
@@ -76,20 +77,19 @@ img {
 ----------------------------------------- */
 @media screen and (min-width: 992px) {
     .grid {
-        grid-template-columns: 1fr 1fr 1fr; /* Three column grid */
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-flow: dense; /* TỰ ĐỘNG LẤP ĐẦY KHOẢNG TRỐNG */
     }
     
     figure {
-        border-radius: 0; /* Removes the border radius */
+        border-radius: 0;
         aspect-ratio: auto;
     }
     
-    /* Reset the last child from the tablet view so it doesn't span everything */
     figure:last-child {
         grid-column: auto; 
     }
 
-    /* Every third figure takes up two columns */
     figure:nth-child(3n) {
         grid-column: span 2;
     }
