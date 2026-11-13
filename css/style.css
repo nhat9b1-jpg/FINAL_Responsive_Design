@@ -77,24 +77,29 @@ img {
 ----------------------------------------- */
 @media screen and (min-width: 992px) {
     .grid {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-auto-flow: dense; /* TỰ ĐỘNG LẤP ĐẦY KHOẢNG TRỐNG */
+        grid-template-columns: 1fr 1fr 1fr; /* Chia làm 3 cột bằng nhau */
+        /* XÓA dòng grid-auto-flow: dense; ở đây đi */
     }
     
     figure {
         border-radius: 0;
-        aspect-ratio: auto;
     }
     
     figure:last-child {
         grid-column: auto; 
     }
 
+    /* MỖI KHỐI THỨ 3 SẼ CHIẾM 2 CỘT (SPAN 2) VÀ 2 HÀNG (SPAN 2) */
     figure:nth-child(3n) {
         grid-column: span 2;
+        grid-row: span 2;
+    }
+    
+    /* Cần cho ảnh bên trong các khối to (khối thứ 3) cao gấp đôi để lấp đầy */
+    figure:nth-child(3n) img {
+        height: 524px; /* = 250px (chiều cao 1 ảnh) * 2 + 10px (gap) + 14px (padding/border dư thừa) */
     }
 }
-
 /* -----------------------------------------
    MEDIA QUERY 3: Prefers Reduced Motion
 ----------------------------------------- */
